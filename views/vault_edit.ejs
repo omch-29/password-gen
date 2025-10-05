@@ -1,0 +1,26 @@
+<% layout('layout') %>
+
+<h2 class="mb-4 text-center">Edit Vault Entry</h2>
+<form action="/vault/<%= vault._id %>?_method=PUT" method="POST" class="card p-4 shadow-lg">
+  <div class="mb-3">
+    <label>Title</label>
+    <input type="text" name="title" value="<%= vault.title %>" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Username</label>
+    <input type="text" name="username" value="<%= vault.username %>" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label>Password</label>
+    <input type="text" name="password" value="<%= vault.password %>" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>URL</label>
+    <input type="url" name="url" value="<%= vault.url %>" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label>Notes</label>
+    <textarea name="notes" class="form-control"><%= vault.notes %></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Update</button>
+</form>

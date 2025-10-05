@@ -1,0 +1,81 @@
+<% layout('layout') %>
+<div class="container my-5">
+
+  
+  <div class="card shadow-sm mb-4">
+    <!-- Card Header start -->
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0"><%= item._id ? 'Edit Entry' : 'Add New Entry' %></h5>
+    </div>
+<form action="<%= item._id ? '/vault/' + item._id + '?_method=PUT' : '/vault' %>" method="POST">
+  <div class="mb-3 card-body">
+    <label class="form-label fw-semibold">Title</label>
+    <input type="text" class="form-control" name="title" value="<%= item.title || '' %>" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Username</label>
+    <input type="text" class="form-control" name="username" value="<%= item.username || '' %>">
+  </div>
+
+
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Password</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="password" name="password" value="<%= item.password || '' %>">
+      <button type="button" class="btn btn-outline-secondary" onclick="generatePassword()">Generate</button>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label fw-semibold">URL</label>
+    <input type="text" class="form-control" name="url" value="<%= item.url || '' %>">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label fw-semibold">Notes</label>
+    <textarea class="form-control" name="notes" rows="3"><%= item.notes || '' %></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-sucess">Save</button>
+</form>
+</div>
+
+<hr>
+
+<% if (vaults && vaults.length > 0) { %>
+  <table class="table table-striped mt-4">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>URL</th>
+        <th>Notes</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% vaults.forEach(v => { %>
+        <tr>
+          <td><%= v.title %></td>
+          <td><%= v.username %></td>
+          <td><%= v.password %></td>
+          <td><%= v.url %></td>
+          <td><%= v.notes %></td>
+          <td>
+            <a href="/vault/edit/<%= v._id %>" class="btn btn-sm btn-warning">Edit</a>
+            <form action="/vault/<%= v._id %>?_method=DELETE" method="POST" style="display:inline;">
+              <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p class="text-muted mt-3">No saved passwords yet.</p>
+<% } %>
+
+
+<script src="/js/passwordGen.js"></script>

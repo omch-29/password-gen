@@ -1,0 +1,21 @@
+<% layout('layout') %>
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card shadow-lg p-4">
+      <img src="/images/secure-banner.jpg" class="img-fluid mb-3 rounded" alt="Register Banner">
+      <h3 class="text-center mb-3">Create Account</h3>
+      <form action="/register" method="POST">
+        <div class="mb-3">
+          <label>Username</label>
+          <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

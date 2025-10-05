@@ -1,0 +1,13 @@
+<% layout('layout') %>
+
+<div class="text-center mt-5">
+  <img src="/images/lock-bg.jpg" class="img-fluid rounded mb-4" alt="Lock Background" style="max-width:600px;">
+  <h1 class="display-5 fw-bold">Welcome to Password Vault 🔐</h1>
+  <p class="lead">Generate and securely store your passwords in one place.</p>
+
+  <% if (!user) { %>
+    <a href="/register" class="btn btn-primary btn-lg mt-3">Get Started</a>
+  <% } else { %>
+    <a href="/vault" class="btn btn-success btn-lg mt-3">Go to Vault</a>
+  <% } %>
+</div>

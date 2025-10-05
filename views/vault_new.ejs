@@ -1,0 +1,38 @@
+<% layout('layout') %>
+
+<h2 class="mb-4 text-center">Add New Vault Entry</h2>
+<form action="/vault" method="POST" class="card p-4 shadow-lg">
+  <div class="mb-3">
+    <label>Title</label>
+    <input type="text" name="title" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Username</label>
+    <input type="text" name="username" class="form-control">
+  </div>
+  <div class="mb-3 d-flex align-items-center gap-2">
+    <div class="flex-grow-1">
+      <label>Password</label>
+      <input type="text" id="generatedPassword" name="password" class="form-control" required>
+    </div>
+    <button type="button" class="btn btn-outline-secondary" onclick="generatePassword()">Generate</button>
+  </div>
+  <div class="mb-3">
+    <label>URL</label>
+    <input type="url" name="url" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label>Notes</label>
+    <textarea name="notes" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success w-100">Save</button>
+</form>
+
+<script>
+function generatePassword() {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+  let password = "";
+  for (let i = 0; i < 12; i++) password += chars[Math.floor(Math.random() * chars.length)];
+  document.getElementById("generatedPassword").value = password;
+}
+</script>

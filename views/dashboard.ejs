@@ -1,0 +1,89 @@
+<!-- <% layout('layout') %>
+<h2>Welcome, <%= user.username %>!</h2>
+
+<div class="mb-3">
+  <a href="/vault/add" class="btn btn-primary">+ Add New Entry</a>
+</div>
+
+
+<div class="card p-3 mb-4">
+  <h5>Generate a Password</h5>
+  <div class="input-group">
+    <input type="text" id="generatedPassword" class="form-control" readonly>
+    <button onclick="generatePassword()" class="btn btn-outline-secondary">Generate</button>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>URL</th>
+      <th>Notes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.forEach(item => { %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.username %></td>
+        <td><%= item.password %></td>
+        <td><a href="<%= item.url %>" target="_blank"><%= item.url %></a></td>
+        <td><%= item.notes %></td>
+        <td>
+          <a href="/vault/edit/<%= item._id %>" class="btn btn-sm btn-warning">Edit</a>
+          <form action="/vault/<%= item._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<script>
+function generatePassword(length = 12) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+  let pwd = "";
+  for (let i = 0; i < length; i++) {
+    pwd += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  document.getElementById("generatedPassword").value = pwd;
+}
+</script> -->
+<h2 class="mb-4">Your Saved Passwords</h2>
+
+<a href="/vault/add" class="btn btn-success mb-3">+ Add New Entry</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>URL</th>
+      <th>Notes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.forEach(v => { %>
+      <tr>
+        <td><%= v.title %></td>
+        <td><%= v.username %></td>
+        <td><%= v.password %></td>
+        <td><a href="<%= v.url %>" target="_blank"><%= v.url %></a></td>
+        <td><%= v.notes %></td>
+        <td>
+          <a href="/vault/edit/<%= v._id %>" class="btn btn-sm btn-warning">Edit</a>
+          <form action="/vault/<%= v._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

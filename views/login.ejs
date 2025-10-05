@@ -1,0 +1,21 @@
+<% layout('layout') %>
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card shadow-lg p-4">
+      <img src="/images/secure-banner.jpg" class="img-fluid mb-3 rounded" alt="Login Banner">
+      <h3 class="text-center mb-3">Login</h3>
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <label>Username</label>
+          <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
