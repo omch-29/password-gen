@@ -14,4 +14,6 @@ This is a secure web application for generating and managing passwords. Users ca
 
 -User-Specific Data: Each user can view and manage only their own password entries.
 
--CRUD Operations: Add, edit, delete, and view password entries.#
+-CRUD Operations: Add, edit, delete, and view password entries.
+
+-Used bootstrap for better frontend UI.
